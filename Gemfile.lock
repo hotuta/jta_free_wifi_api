@@ -46,6 +46,10 @@ GEM
     crass (1.0.3)
     erubi (1.7.0)
     ffi (1.9.18)
+    geokit (1.11.0)
+    geokit-rails (2.3.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (0.9.1)
@@ -133,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  geokit-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
