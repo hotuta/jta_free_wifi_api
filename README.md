@@ -13,6 +13,7 @@ Ruby on Rails 5.1.4
 ## 動作準備
 
 ```bin
+$ bundle install
 $ rails db:migrate
 $ rails db:seed
 ```
