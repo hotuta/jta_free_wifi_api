@@ -7,7 +7,13 @@ class Spot < ApplicationRecord
 
     if params[:lat].present? && params[:lng].present?
       @coordinates = [params[:lat], params[:lng]]
-      Spot.within(distance, origin: @coordinates).by_distance(origin: @coordinates).limit(limit)
+      if params[:word].present?
+        Spot.within(distance, origin: @coordinates).by_distance(origin: @coordinates).where('name_jp like ? or address_jp like ?', "%#{params[:word]}%", "%#{params[:word]}%").limit(limit)
+      else
+        Spot.within(distance, origin: @coordinates).by_distance(origin: @coordinates).limit(limit)
+      end
+    elsif params[:word].present?
+      Spot.where('name_jp like ? or address_jp like ?', "%#{params[:word]}%", "%#{params[:word]}%").limit(limit)
     end
   end
 
