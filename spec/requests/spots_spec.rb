@@ -37,4 +37,33 @@ RSpec.describe 'Spots', type: :request do
       expect(json[0]['distance']).to eq 16.30550312990535
     end
   end
+
+  describe 'GET /spots.json?lat=35.658034&lng=139.701636&language=en' do
+    it '英語で渋谷駅半径500m以内のWi-Fiスポット情報が5件返されること' do
+      get '/spots.json?lat=35.658034&lng=139.701636&language=en'
+      expect(response).to be_success
+      expect(json.size).to eq 5
+      expect(json[0]['name_en']).to eq 'Shibuya(Hanzomon line)'
+      expect(json[0]['address_en']).to eq '2-1-1, Dogenzaka, Shibuya-ku, Tokyo'
+      expect(json[0]['distance']).to eq 16.30550312990535
+    end
+
+    it '英語で渋谷駅半径500m以内のWi-Fiスポット情報が20件返されること' do
+      get '/spots.json?lat=35.658034&lng=139.701636&language=en&limit=20'
+      expect(response).to be_success
+      expect(json.size).to eq 20
+      expect(json[0]['name_en']).to eq 'Shibuya(Hanzomon line)'
+      expect(json[0]['address_en']).to eq '2-1-1, Dogenzaka, Shibuya-ku, Tokyo'
+      expect(json[0]['distance']).to eq 16.30550312990535
+    end
+
+    it '英語で渋谷駅半径5000m以内のWi-Fiスポット情報が500件返されること' do
+      get '/spots.json?lat=35.658034&lng=139.701636&language=en&distance=5000&limit=500'
+      expect(response).to be_success
+      expect(json.size).to eq 500
+      expect(json[0]['name_en']).to eq 'Shibuya(Hanzomon line)'
+      expect(json[0]['address_en']).to eq '2-1-1, Dogenzaka, Shibuya-ku, Tokyo'
+      expect(json[0]['distance']).to eq 16.30550312990535
+    end
+  end
 end
