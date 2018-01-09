@@ -47,11 +47,31 @@ $ bundle exec rspec
 
 例) `distance=2000`
 
+## 英語オプション
+
+例) `language=en`
+
+## あいまい検索(施設名と住所)
+
+例) `word=渋谷`
+
 # 使い方
 
 ## 渋谷駅(座標: 35.658034, 139.701636)半径2000m以内50件
 
 `http://0.0.0.0:3000/spots.json?lat=35.658034&lng=139.701636&distance=2000&limit=50`
+
+# Heroku
+
+CloudGarageでDokkuを活用してPostgreSQLサーバーを立ててHerokuのDBとして利用しています。
+
+[渋谷駅半径500m以内のWi-Fiスポット情報5件](https://jta-free-wifi.herokuapp.com/spots.json?lat=35.658034&lng=139.701636)
+
+[英語で渋谷駅半径500m以内のWi-Fiスポット情報20件](https://jta-free-wifi.herokuapp.com/spots.json?lat=35.658034&lng=139.701636&language=en&limit=20)
+
+[渋谷が施設名か住所に含まれているWi-Fiスポット情報100件](https://jta-free-wifi.herokuapp.com/spots.json?word=渋谷&limit=100)
+
+[渋谷駅半径5km以内で渋谷が施設名か住所に含まれているWi-Fiスポット情報100件](https://jta-free-wifi.herokuapp.com/spots.json?lat=35.658034&lng=139.701636&word=渋谷&distance=5000&limit=100)
 
 ## 情報元
 
